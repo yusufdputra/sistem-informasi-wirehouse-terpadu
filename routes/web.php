@@ -8,9 +8,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RabController;
 use App\Http\Controllers\RabTempController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\RestokController;
 use App\Http\Controllers\UserManagementController;
-use App\Models\Barang;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +30,10 @@ Route::get('/', [HomeController::class, 'auth'])->name('/');
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/password', [ResetPasswordController::class, 'index'])->name('password.index');
+Route::post('/password/kirim', [ResetPasswordController::class, 'kirim'])->name('password.kirim');
+Route::get('/password/forgot/{token}', [ResetPasswordController::class, 'forgot'])->name('password.forgot');
+Route::post('/password/ubah', [ResetPasswordController::class, 'ubah'])->name('password.ubah');
 
 // admin
 
